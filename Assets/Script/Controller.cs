@@ -10,6 +10,8 @@ public class Controller : MonoBehaviour
     public FloatingJoystick HUDController;
     public float MovingThreshold;
 
+    public Vector3 SpawnPosition;
+
     private CharacterController _controller;
     private Vector3 _fallVelocity;
     private Animator _animator;
@@ -25,6 +27,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         HUDCanvas.gameObject.SetActive(true);
+        transform.position = SpawnPosition;
     }
 
     void Update()
@@ -45,5 +48,15 @@ public class Controller : MonoBehaviour
         }
         _fallVelocity.y += Gravity * Time.deltaTime;
         _controller.Move(_fallVelocity * Time.deltaTime);
+    }
+
+    void ChopTree()
+    {
+
+    }
+
+    void CollectWater()
+    {
+
     }
 }
