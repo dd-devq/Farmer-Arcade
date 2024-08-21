@@ -23,6 +23,7 @@ public class Tree : MonoBehaviour
             if (_counter == 0)
             {
                 other.gameObject.GetComponent<Scythe>().ScytheCallback(SpawnTree(5));
+                ResourceManager.Instance.AddWood(3);
                 DespawnTree();
             }
             else

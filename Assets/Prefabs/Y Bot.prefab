@@ -1305,6 +1305,7 @@ GameObject:
   - component: {fileID: 7424115004100671704}
   - component: {fileID: 5866666021088628455}
   - component: {fileID: 5866666021088628456}
+  - component: {fileID: 5024197637988843988}
   m_Layer: 0
   m_Name: Y Bot
   m_TagString: Untagged
@@ -1389,7 +1390,20 @@ MonoBehaviour:
   MovingThreshold: 0.5
   SpawnPosition: {x: -3, y: 3, z: 6}
   Scythe: {fileID: 3596104057560863436}
-  ScytheSpeed: 200
+  ScytheSpeed: 300
+--- !u!65 &5024197637988843988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227821473418246168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42263985, y: 0.16781282, z: 0.44114685}
+  m_Center: {x: -0.007258892, y: 0.071009636, z: 0.09233379}
 --- !u!1 &4899754428838039002
 GameObject:
   m_ObjectHideFlags: 0

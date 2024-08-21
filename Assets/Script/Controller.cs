@@ -18,7 +18,6 @@ public class Controller : MonoBehaviour
     private int _velocity;
 
 
-
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -38,21 +37,45 @@ public class Controller : MonoBehaviour
 
         if (inputVelocity > MovingThreshold)
         {
+
+            // Move
             Vector3 movement = new Vector3(-HUDController.Direction.y, 0, HUDController.Direction.x);
             _controller.Move(movement * Time.deltaTime * MovementSpeed);
+
+            // Rotate
             float angle = Mathf.Atan2(HUDController.Direction.y, HUDController.Direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, -angle, 0));
+
+            // Animation
             _animator.SetFloat(_velocity, inputVelocity);
+            AudioManager.Instance.PlaySound("run");
         }
         else
         {
+            // Animation
             _animator.SetFloat(_velocity, 0);
         }
+
+        //Gravity
         _fallVelocity.y += Gravity * Time.deltaTime;
         _controller.Move(_fallVelocity * Time.deltaTime);
 
+        // Move Scythe
         Scythe.RotateAround(transform.position, Vector3.up, ScytheSpeed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
 
+        // Game Over
+        if (other.gameObject.name == "Platform")
+        {
+            Debug.Log("Plane");
+        }
+
+        if (other.gameObject.name.Contains("Bridge"))
+        {
+            Debug.Log("Bridge");
+        }
+    }
 }
