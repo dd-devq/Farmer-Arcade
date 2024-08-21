@@ -9,13 +9,15 @@ public class Controller : MonoBehaviour
     public Canvas HUDCanvas;
     public FloatingJoystick HUDController;
     public float MovingThreshold;
-
     public Vector3 SpawnPosition;
-
+    public Transform Scythe;
+    public float ScytheSpeed;
     private CharacterController _controller;
     private Vector3 _fallVelocity;
     private Animator _animator;
     private int _velocity;
+
+
 
     private void Awake()
     {
@@ -48,15 +50,9 @@ public class Controller : MonoBehaviour
         }
         _fallVelocity.y += Gravity * Time.deltaTime;
         _controller.Move(_fallVelocity * Time.deltaTime);
+
+        Scythe.RotateAround(transform.position, Vector3.up, ScytheSpeed * Time.deltaTime);
     }
 
-    void ChopTree()
-    {
 
-    }
-
-    void CollectWater()
-    {
-
-    }
 }

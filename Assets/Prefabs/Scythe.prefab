@@ -16294,6 +16294,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5136715720743915256}
+  - component: {fileID: 4651064783699678483}
+  - component: {fileID: 6056639927982704752}
   m_Layer: 0
   m_Name: Scythe
   m_TagString: Untagged
@@ -16317,6 +16319,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &4651064783699678483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477106222373753922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99559546, y: 1.8370733, z: 0.10192109}
+  m_Center: {x: -0.10532936, y: 0.3046074, z: 0.52815133}
+--- !u!114 &6056639927982704752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477106222373753922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef50390b0e894b169947793596af64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5483697888154172969
 GameObject:
   m_ObjectHideFlags: 0
