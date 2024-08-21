@@ -6422,6 +6422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Y Bot
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021088628455, guid: 21695b2757f6c43ed9d8769983a27c2b, type: 3}
+      propertyPath: m_StepOffset
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021088628456, guid: 21695b2757f6c43ed9d8769983a27c2b, type: 3}
       propertyPath: HUDCanvas
       value: 
@@ -6430,6 +6434,10 @@ PrefabInstance:
       propertyPath: HUDController
       value: 
       objectReference: {fileID: 218920749}
+    - target: {fileID: 5866666021088628456, guid: 21695b2757f6c43ed9d8769983a27c2b, type: 3}
+      propertyPath: MovementSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021088628456, guid: 21695b2757f6c43ed9d8769983a27c2b, type: 3}
       propertyPath: MovingThreshold
       value: 0.2
