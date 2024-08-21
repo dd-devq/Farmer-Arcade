@@ -5,37 +5,45 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public float Gravity = -9.81f;
-    public Vector3 FallVelocity;
     public float MovementSpeed;
-    public float RotationSpeed;
-
     public Canvas HUDCanvas;
-    public VariableJoystick HUDController;
+    public FloatingJoystick HUDController;
+    public float MovingThreshold;
 
     private CharacterController _controller;
+    private Vector3 _fallVelocity;
+    private Animator _animator;
+    private int _velocity;
 
-    private bool isJoystick;
     private void Awake()
     {
-        _controller = transform.GetComponent<CharacterController>();
+        _controller = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
+        _velocity = Animator.StringToHash("Velocity");
     }
 
     void Start()
     {
         HUDCanvas.gameObject.SetActive(true);
-        isJoystick = true;
     }
 
     void Update()
     {
-        if (isJoystick)
+        var inputVelocity = Mathf.Sqrt(HUDController.Direction.y * HUDController.Direction.y + HUDController.Direction.x * HUDController.Direction.x);
+
+        if (inputVelocity > MovingThreshold)
         {
-            Vector3 movement = new Vector3(HUDController.Direction.x, 0, HUDController.Direction.y);
+            Vector3 movement = new Vector3(-HUDController.Direction.y, 0, HUDController.Direction.x);
             _controller.Move(movement * Time.deltaTime * MovementSpeed);
-            var targetDirection = Vector3.RotateTowards(_controller.transform.forward, movement, RotationSpeed * Time.deltaTime, 0.0f);
-            _controller.transform.rotation = Quaternion.LookRotation(targetDirection);
+            float angle = Mathf.Atan2(HUDController.Direction.y, HUDController.Direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, -angle, 0));
+            _animator.SetFloat(_velocity, inputVelocity);
         }
-        FallVelocity.y += Gravity * Time.deltaTime;
-        _controller.Move(FallVelocity * Time.deltaTime);
+        else
+        {
+            _animator.SetFloat(_velocity, 0);
+        }
+        _fallVelocity.y += Gravity * Time.deltaTime;
+        _controller.Move(_fallVelocity * Time.deltaTime);
     }
 }
