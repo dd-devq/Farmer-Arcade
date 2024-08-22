@@ -40,4 +40,15 @@ public class ResourceManager : SingletonMono<ResourceManager>
         WaterResource -= amount;
         HUD.PopUpWater(WaterResource, false);
     }
+    public void AddIsland(int amount)
+    {
+        LiveIsland += amount;
+        HUD.UpdateIsland();
+    }
+    public void SubstractIsland(int amount)
+    {
+        LiveIsland -= amount;
+        HUD.UpdateIsland();
+    }
+
 }

@@ -87,13 +87,23 @@ public class Controller : MonoBehaviour
         {
             Debug.Log("Bridge");
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
+        Debug.Log(other.gameObject.name);
         if (other.gameObject.name == "Water")
         {
-            Debug.Log("Water");
+            InvokeRepeating(nameof(CollectWater), 0.1f, 1.0f);
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.gameObject.name == "Water")
+        {
+            CancelInvoke(nameof(CollectWater));
+        }
+    }
+    private void CollectWater()
+    {
+        ResourceManager.Instance.AddWater(1);
     }
 }

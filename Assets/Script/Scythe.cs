@@ -11,7 +11,10 @@ public class Scythe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AudioManager.Instance.PlaySound("chop");
+        if (other.gameObject.name.Contains("Tree"))
+        {
+            AudioManager.Instance.PlaySound("chop");
+        }
     }
 
 }

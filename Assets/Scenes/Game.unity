@@ -317,6 +317,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5503973787322399103, guid: d6b03c6b630ec44ed8270338385d2f23, type: 3}
   m_PrefabInstance: {fileID: 57252878}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &244926404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 204287687232576484, guid: d6d47581074a448d5b14b23231155df0, type: 3}
+  m_PrefabInstance: {fileID: 1174336854}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &428559974
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,8 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WoodResource: 0
   WaterResource: 0
-  IslandAmount: 0
-  LiveIsland: 0
+  IslandAmount: 9
+  LiveIsland: 2
   HUD: {fileID: 496951796}
 --- !u!114 &496951796 stripped
 MonoBehaviour:
@@ -715,6 +726,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 870395856}
     m_Modifications:
+    - target: {fileID: 1937213213, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
+      propertyPath: IsPond
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 984206825590200289, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -763,7 +778,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island 1 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1937213213, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
 --- !u!4 &574565267 stripped
 Transform:
@@ -1218,6 +1234,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 870395856}
     m_Modifications:
+    - target: {fileID: 1711622798, guid: 566f3b99fe2e5421eb7cda1fa4d97028, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 3246568532380093228, guid: 566f3b99fe2e5421eb7cda1fa4d97028, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1518,6 +1538,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7006145013706289614, guid: d6d47581074a448d5b14b23231155df0, type: 3}
+      propertyPath: IslandAmount
+      value: 
+      objectReference: {fileID: 244926404}
     - target: {fileID: 7006145014429389778, guid: d6d47581074a448d5b14b23231155df0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1701,6 +1725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 870395856}
     m_Modifications:
+    - target: {fileID: 992857252, guid: ba5d6b9a40c044a82ab689c2ed37204c, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 3183690471784724928, guid: ba5d6b9a40c044a82ab689c2ed37204c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2079,6 +2107,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 870395856}
     m_Modifications:
+    - target: {fileID: 1937213213, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
+      propertyPath: IsPond
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 984206825590200289, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2127,11 +2159,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8977403242399066967, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
-      propertyPath: m_Name
-      value: Water
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1937213213, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b041e7f9a4d204b5b85278ceaf094490, type: 3}
 --- !u!4 &1937213212 stripped
 Transform:
@@ -2145,6 +2174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 870395856}
     m_Modifications:
+    - target: {fileID: 3296438554361225652, guid: 31c9e9d662126445a9e82370916d81f6, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 6241569955055713653, guid: 31c9e9d662126445a9e82370916d81f6, type: 3}
       propertyPath: m_Name
       value: Island 2
@@ -2277,10 +2310,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1086307163}
     m_Modifications:
-    - target: {fileID: 1159652172, guid: d6b03c6b630ec44ed8270338385d2f23, type: 3}
-      propertyPath: WoodResource
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5127869701104985029, guid: d6b03c6b630ec44ed8270338385d2f23, type: 3}
       propertyPath: m_Name
       value: Bridge

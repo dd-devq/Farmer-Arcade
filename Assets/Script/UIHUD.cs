@@ -8,6 +8,14 @@ public class UIHUD : BaseUI
     public TextMeshProUGUI IslandAmount;
     public GameObject PopUpPrefab;
 
+    private void Start()
+    {
+        WoodAmount.SetText(ResourceManager.Instance.WoodResource.ToString());
+        WaterAmount.SetText(ResourceManager.Instance.WaterResource.ToString());
+        IslandAmount.SetText(ResourceManager.Instance.LiveIsland + "/" + ResourceManager.Instance.IslandAmount + " Islands");
+    }
+
+
     public void PopUpWood(int amount, bool isAdd)
     {
         // Prefab
@@ -17,10 +25,10 @@ public class UIHUD : BaseUI
     public void PopUpWater(int amount, bool isAdd)
     {
         // Prefab
-        WoodAmount.SetText(ResourceManager.Instance.WaterResource.ToString());
+        WaterAmount.SetText(ResourceManager.Instance.WaterResource.ToString());
     }
 
-    public void UpdateIsland(bool isDead)
+    public void UpdateIsland()
     {
         IslandAmount.SetText(ResourceManager.Instance.LiveIsland + "/" + ResourceManager.Instance.IslandAmount + " Islands");
     }

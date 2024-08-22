@@ -1,8 +1,16 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bridge : MonoBehaviour
 {
     public int WoodResource;
+    private AudioSource _audioSource;
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         foreach (Transform child in transform)
@@ -31,23 +39,30 @@ public class Bridge : MonoBehaviour
 
         if (WoodResource == 0)
         {
-            foreach (Transform child in transform)
-            {
-                if (child.gameObject.name == "BuildZone")
-                {
-                    child.gameObject.SetActive(false);
-                    continue;
-                }
-                child.gameObject.SetActive(true);
-            }
+            _audioSource.Play();
+            StartCoroutine(WaitForSound());
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.name == "Player" && WoodResource != 0)
         {
             ExtractWood();
+        }
+    }
+
+    public IEnumerator WaitForSound()
+    {
+        yield return new WaitUntil(() => _audioSource.isPlaying == false);
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.name == "BuildZone")
+            {
+                child.gameObject.SetActive(false);
+                continue;
+            }
+            child.gameObject.SetActive(true);
         }
     }
 
