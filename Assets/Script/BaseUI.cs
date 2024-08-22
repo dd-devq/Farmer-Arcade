@@ -5,6 +5,7 @@ public enum UIIndex
 {
     MainMenu,
     HUD,
+    WinUI,
     None
 }
 

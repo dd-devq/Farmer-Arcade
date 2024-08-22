@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &73006231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 204287687232576484, guid: d6d47581074a448d5b14b23231155df0, type: 3}
+  m_PrefabInstance: {fileID: 1494096264}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1024950875
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +178,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b452867b993494f3baa6c12a14038a88, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -258,6 +269,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7006145013706289614, guid: d6d47581074a448d5b14b23231155df0, type: 3}
+      propertyPath: IslandAmount
+      value: 
+      objectReference: {fileID: 73006231}
     - target: {fileID: 7006145014846153305, guid: d6d47581074a448d5b14b23231155df0, type: 3}
       propertyPath: m_Name
       value: UI

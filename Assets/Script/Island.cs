@@ -70,8 +70,8 @@ public class Island : MonoBehaviour
 
         if (WaterResource == WaterAbsorbed)
         {
-            _audioSource.Play();
             ReviveIsland();
+            _audioSource.Play();
         }
     }
 

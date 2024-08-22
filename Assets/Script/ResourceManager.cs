@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResourceManager : SingletonMono<ResourceManager>
 {
@@ -44,6 +45,10 @@ public class ResourceManager : SingletonMono<ResourceManager>
     {
         LiveIsland += amount;
         HUD.UpdateIsland();
+        if (LiveIsland == IslandAmount)
+        {
+            UIManager.Instance.ShowUI(UIIndex.WinUI, new UIParam { Data = "CONGRATULATIONS" });
+        }
     }
     public void SubstractIsland(int amount)
     {

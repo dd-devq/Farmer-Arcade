@@ -1,11 +1,14 @@
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bridge : MonoBehaviour
 {
     public int WoodResource;
+    public int WoodAbsorbed;
     private AudioSource _audioSource;
+    public TextMeshProUGUI WoodResourceText;
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -21,23 +24,26 @@ public class Bridge : MonoBehaviour
             }
             child.gameObject.SetActive(false);
         }
+        WoodResourceText.SetText(WoodAbsorbed + "/" + WoodResource);
     }
 
     public void ExtractWood()
     {
-        if (ResourceManager.Instance.WoodResource >= WoodResource)
+        var woodAmount = WoodResource - WoodAbsorbed;
+        if (ResourceManager.Instance.WoodResource >= woodAmount)
         {
-            ResourceManager.Instance.SubstractWood(WoodResource);
-            WoodResource = 0;
+            ResourceManager.Instance.SubstractWood(woodAmount);
+            WoodAbsorbed = WoodResource;
 
         }
         else
         {
-            WoodResource -= ResourceManager.Instance.WoodResource;
+            WoodAbsorbed += ResourceManager.Instance.WoodResource;
             ResourceManager.Instance.SubstractWood(ResourceManager.Instance.WoodResource);
         }
+        WoodResourceText.SetText(WoodAbsorbed + "/" + WoodResource);
 
-        if (WoodResource == 0)
+        if (WoodResource == WoodAbsorbed)
         {
             _audioSource.Play();
             StartCoroutine(WaitForSound());
@@ -46,7 +52,7 @@ public class Bridge : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player" && WoodResource != 0)
+        if (other.gameObject.name == "Player" && WoodAbsorbed < WoodResource)
         {
             ExtractWood();
         }

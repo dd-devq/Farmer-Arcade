@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Controller : MonoBehaviour
     private Vector3 _fallVelocity;
     private Animator _animator;
     private int _velocity;
-
+    private bool _isDead;
 
     private void Awake()
     {
@@ -29,10 +30,15 @@ public class Controller : MonoBehaviour
     {
         HUDCanvas.gameObject.SetActive(true);
         transform.position = SpawnPosition;
+        _isDead = false;
     }
 
     void Update()
     {
+        _fallVelocity.y += Gravity * Time.deltaTime;
+        _controller.Move(_fallVelocity * Time.deltaTime);
+
+        if (_isDead) return;
         var inputVelocity = Mathf.Sqrt(HUDController.Direction.y * HUDController.Direction.y + HUDController.Direction.x * HUDController.Direction.x);
 
         if (inputVelocity > MovingThreshold)
@@ -80,17 +86,18 @@ public class Controller : MonoBehaviour
         // Game Over
         if (other.gameObject.name == "Platform")
         {
-            Debug.Log("Plane");
+            UIManager.Instance.ShowUI(UIIndex.WinUI, new UIParam { Data = "GAME OVER" });
+            _isDead = true;
+            _animator.SetFloat(_velocity, 0);
+            transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+            Scythe.gameObject.SetActive(false);
         }
 
-        if (other.gameObject.name.Contains("Bridge"))
-        {
-            Debug.Log("Bridge");
-        }
+
         Debug.Log(other.gameObject.name);
         if (other.gameObject.name == "Water")
         {
-            InvokeRepeating(nameof(CollectWater), 0.1f, 1.0f);
+            InvokeRepeating(nameof(CollectWater), 0.1f, .1f);
         }
     }
 
