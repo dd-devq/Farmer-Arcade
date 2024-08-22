@@ -97,7 +97,7 @@ public class Controller : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.gameObject.name == "Water")
         {
-            InvokeRepeating(nameof(CollectWater), 0.1f, .1f);
+            InvokeRepeating(nameof(CollectWater), 0.1f, 1.5f);
         }
     }
 

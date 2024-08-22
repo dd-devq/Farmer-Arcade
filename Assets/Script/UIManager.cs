@@ -11,6 +11,7 @@ public class UIManager : SingletonMono<UIManager>
 
     public void Awake()
     {
+        Application.targetFrameRate = 60;
         _uiDictionary = new Dictionary<UIIndex, BaseUI>();
     }
 
