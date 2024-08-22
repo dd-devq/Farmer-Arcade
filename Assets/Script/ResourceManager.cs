@@ -4,7 +4,8 @@ public class ResourceManager : SingletonMono<ResourceManager>
 {
     public int WoodResource;
     public int WaterResource;
-
+    public int IslandAmount;
+    public int LiveIsland;
     public UIHUD HUD;
 
     void Start()

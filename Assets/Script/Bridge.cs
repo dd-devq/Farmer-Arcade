@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bridge : MonoBehaviour
@@ -9,6 +7,10 @@ public class Bridge : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
+            if (child.gameObject.name == "BuildZone")
+            {
+                continue;
+            }
             child.gameObject.SetActive(false);
         }
     }
@@ -17,22 +19,35 @@ public class Bridge : MonoBehaviour
     {
         if (ResourceManager.Instance.WoodResource >= WoodResource)
         {
-            ResourceManager.Instance.WoodResource -= WoodResource;
+            ResourceManager.Instance.SubstractWood(WoodResource);
             WoodResource = 0;
 
         }
         else
         {
             WoodResource -= ResourceManager.Instance.WoodResource;
-            ResourceManager.Instance.WoodResource = 0;
+            ResourceManager.Instance.SubstractWood(ResourceManager.Instance.WoodResource);
         }
 
         if (WoodResource == 0)
         {
             foreach (Transform child in transform)
             {
+                if (child.gameObject.name == "BuildZone")
+                {
+                    child.gameObject.SetActive(false);
+                    continue;
+                }
                 child.gameObject.SetActive(true);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Player")
+        {
+            ExtractWood();
         }
     }
 

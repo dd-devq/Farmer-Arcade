@@ -37,7 +37,11 @@ public class Controller : MonoBehaviour
 
         if (inputVelocity > MovingThreshold)
         {
-
+            Scythe.GetComponent<Collider>().enabled = false;
+            foreach (Transform child in Scythe.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
             // Move
             Vector3 movement = new Vector3(-HUDController.Direction.y, 0, HUDController.Direction.x);
             _controller.Move(movement * Time.deltaTime * MovementSpeed);
@@ -54,6 +58,13 @@ public class Controller : MonoBehaviour
         {
             // Animation
             _animator.SetFloat(_velocity, 0);
+            foreach (Transform child in Scythe.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+            Scythe.GetComponent<Collider>().enabled = true;
+
+            Scythe.RotateAround(transform.position, Vector3.up, ScytheSpeed * Time.deltaTime);
         }
 
         //Gravity
@@ -61,7 +72,6 @@ public class Controller : MonoBehaviour
         _controller.Move(_fallVelocity * Time.deltaTime);
 
         // Move Scythe
-        Scythe.RotateAround(transform.position, Vector3.up, ScytheSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -76,6 +86,14 @@ public class Controller : MonoBehaviour
         if (other.gameObject.name.Contains("Bridge"))
         {
             Debug.Log("Bridge");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "Water")
+        {
+            Debug.Log("Water");
         }
     }
 }
